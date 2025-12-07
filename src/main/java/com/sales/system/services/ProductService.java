@@ -50,13 +50,13 @@ public class ProductService {
 		Product product = productRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Product with Id: " + id + " not found."));
 		
-		if (!(product != null && product.getName().isBlank()))
+		if (product != null && !product.getName().isBlank())
 			product.setName(update.getName());
 		
-		if (!(product != null && product.getPrice() == 0))
+		if (product != null && !(product.getPrice() != 0)) 
 			product.setPrice(update.getPrice());
 		
-		if (!(product != null && product.getStockQuantity() == 0))
+		if (product != null && !(product.getStockQuantity() != 0))
 			product.setStockQuantity(update.getStockQuantity());
 		
 		product = productRepository.save(product);

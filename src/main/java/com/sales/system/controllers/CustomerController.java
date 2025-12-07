@@ -13,29 +13,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sales.system.dto.CostumerDTO;
-import com.sales.system.entities.Costumer;
-import com.sales.system.services.CostumerService;
+import com.sales.system.dto.CustomerDTO;
+import com.sales.system.entities.Customer;
+import com.sales.system.services.CustomerService;
 
 @RestController
 @RequestMapping(value = "/costumer")
-public class CostumerController {
+public class CustomerController {
 
     @Autowired
-    CostumerService costumerService;
+    CustomerService costumerService;
     
     @PostMapping(value = "/register")
-    public ResponseEntity<Costumer> registerCostumer(@RequestBody CostumerDTO dto) {
+    public ResponseEntity<Customer> registerCostumer(@RequestBody CustomerDTO dto) {
         return costumerService.registerCostumer(dto);
     }
     
     @GetMapping(value = "/all")
-    public ResponseEntity<List<Costumer>> findAll() {
+    public ResponseEntity<List<Customer>> findAll() {
         return costumerService.findAll();
     }
     
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Costumer> findById(@PathVariable Long id) {
+    public ResponseEntity<Customer> findById(@PathVariable Long id) {
         return costumerService.findById(id);
     }
     
@@ -46,7 +46,7 @@ public class CostumerController {
     }
     
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity<Costumer> update(@PathVariable Long id, @RequestBody CostumerDTO dto) {
+    public ResponseEntity<Customer> update(@PathVariable Long id, @RequestBody CustomerDTO dto) {
         return costumerService.update(id, dto);
     }
 }

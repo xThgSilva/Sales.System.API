@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,18 +35,18 @@ public class ProductController {
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Product> findById(Long id) {
+	public ResponseEntity<Product> findById(@PathVariable Long id) {
 		return productService.findById(id);
 	}
 	
 	@DeleteMapping(value = "/delete/{id}")
-	public ResponseEntity<Product> delete(Long id) {
+	public ResponseEntity<Product> delete(@PathVariable Long id) {
 		productService.delete(id);
         return ResponseEntity.noContent().build();
 	}
 	
 	@PutMapping(value = "/update/{id}")
-	public ResponseEntity<Product> update(Long id, ProductDTO update) {
+	public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody ProductDTO update) {
 		return productService.updateProduct(id, update);
 	}
 }

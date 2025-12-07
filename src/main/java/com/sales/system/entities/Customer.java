@@ -1,14 +1,18 @@
 package com.sales.system.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_costumer")
-public class Costumer {
+public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +21,13 @@ public class Costumer {
 	private String email;
 	private long telephone;
 	
-	public Costumer() {
+	@OneToMany(mappedBy = "customer")
+	private List<Sale> sales = new ArrayList<>();
+
+	public Customer() {
 	}
 
-	public Costumer(Long id, String name, String email, long telephone) {
+	public Customer(Long id, String name, String email, long telephone) {
 		this.name = name;
 		this.email = email;
 		this.telephone = telephone;

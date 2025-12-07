@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.sales.system.dto.CostumerDTO;
-import com.sales.system.entities.Costumer;
+import com.sales.system.dto.CustomerDTO;
+import com.sales.system.entities.Customer;
 import com.sales.system.exceptions.NotFoundException;
-import com.sales.system.repositories.CostumerRepository;
+import com.sales.system.repositories.CustomerRepository;
 
 @Service
-public class CostumerService {
+public class CustomerService {
 
 	@Autowired
-	CostumerRepository costumerRepository;
+	CustomerRepository costumerRepository;
 	
-	public ResponseEntity<Costumer> registerCostumer(CostumerDTO dto){
-		Costumer costumer = new Costumer();
+	public ResponseEntity<Customer> registerCostumer(CustomerDTO dto){
+		Customer costumer = new Customer();
 		
 		costumer.setName(dto.getName());
 		costumer.setEmail(dto.getEmail());
@@ -29,26 +29,26 @@ public class CostumerService {
 		return ResponseEntity.ok(costumer);
 	}
 	
-	public ResponseEntity<List<Costumer>> findAll(){
+	public ResponseEntity<List<Customer>> findAll(){
 		return ResponseEntity.ok(costumerRepository.findAll());
 	}
 	
-	public ResponseEntity<Costumer> findById(Long id) {
-		Costumer costumerExist = costumerRepository.findById(id)
+	public ResponseEntity<Customer> findById(Long id) {
+		Customer costumerExist = costumerRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Costumer with Id: " + id + " not found." ));
 		
 		return ResponseEntity.ok(costumerExist);
 	}
 	
 	public void delete(Long id){
-		Costumer costumer = costumerRepository.findById(id)
+		Customer costumer = costumerRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Costumer with Id: " + id + " not found." ));
 		
 		costumerRepository.deleteById(id);
 	}
 	
-	public ResponseEntity<Costumer> update(Long id, CostumerDTO update) {
-		Costumer costumer = costumerRepository.findById(id)
+	public ResponseEntity<Customer> update(Long id, CustomerDTO update) {
+		Customer costumer = costumerRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Costumer with Id: " + id + " not found." ));
 		
 		if (update.getName() != null && !update.getName().isBlank()) {
