@@ -1,11 +1,8 @@
 package com.sales.system.services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.sales.system.dto.ProductDTO;
 import com.sales.system.entities.Product;
 import com.sales.system.exceptions.NotFoundException;
@@ -17,7 +14,7 @@ public class ProductService {
 	@Autowired
 	ProductRepository productRepository;
 	
-	public ResponseEntity<Product> registerProduct(ProductDTO dto) {
+	public Product registerProduct(ProductDTO dto) {
 		Product product = new Product();
 		
 		product.setName(dto.getName());
@@ -26,17 +23,18 @@ public class ProductService {
 		
 		product = productRepository.save(product);
 		
-		return ResponseEntity.ok(product);
+		return product;
 	}
 	
-	public ResponseEntity<List<Product>> findAll() {
-		return ResponseEntity.ok(productRepository.findAll());
+	public List<Product> findAllProducts() {
+		return productRepository.findAll();
 	}
 	
-	public ResponseEntity<Product> findById(Long id) {
+	public Product findById(Long id) {
 		Product product = productRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Product with Id: " + id + " not found."));
-		return ResponseEntity.ok(product);
+		
+		return product;
 	}
 	
 	public void delete(Long id) {
@@ -46,7 +44,7 @@ public class ProductService {
 		productRepository.deleteById(id);
 	}
 	
-	public ResponseEntity<Product> updateProduct(Long id, ProductDTO update) { 
+	public Product updateProduct(Long id, ProductDTO update) { 
 		Product product = productRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Product with Id: " + id + " not found."));
 		
@@ -61,6 +59,6 @@ public class ProductService {
 		
 		product = productRepository.save(product);
 		
-		return ResponseEntity.ok(product);
+		return product;
 	}
 } 

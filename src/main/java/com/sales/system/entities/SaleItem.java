@@ -1,5 +1,7 @@
 package com.sales.system.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +22,7 @@ public class SaleItem {
 	
 	@ManyToOne
 	@JoinColumn(name = "sale_id")
+	@JsonBackReference
 	private Sale sale;
 	
 	@ManyToOne()
@@ -57,5 +60,21 @@ public class SaleItem {
 
 	public void setUnitPrice(float unitPrice) {
 		this.unitPrice = unitPrice;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Sale getSale() {
+		return sale;
+	}
+
+	public void setSale(Sale sale) {
+		this.sale = sale;
 	}
 }

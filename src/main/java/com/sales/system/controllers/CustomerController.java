@@ -26,17 +26,17 @@ public class CustomerController {
     
     @PostMapping(value = "/register")
     public ResponseEntity<Customer> registerCostumer(@RequestBody CustomerDTO dto) {
-        return costumerService.registerCostumer(dto);
+        return ResponseEntity.ok(costumerService.registerCostumer(dto));
     }
     
     @GetMapping(value = "/all")
-    public ResponseEntity<List<Customer>> findAll() {
-        return costumerService.findAll();
+    public ResponseEntity<List<Customer>> findAllCustomers() {
+        return ResponseEntity.ok(costumerService.findAllCustomers());
     }
     
     @GetMapping(value = "/{id}")
     public ResponseEntity<Customer> findById(@PathVariable Long id) {
-        return costumerService.findById(id);
+        return ResponseEntity.ok(costumerService.findById(id));
     }
     
     @DeleteMapping(value = "/delete/{id}")
@@ -47,6 +47,6 @@ public class CustomerController {
     
     @PutMapping(value = "/update/{id}")
     public ResponseEntity<Customer> update(@PathVariable Long id, @RequestBody CustomerDTO dto) {
-        return costumerService.update(id, dto);
+        return ResponseEntity.ok(costumerService.update(id, dto));
     }
 }

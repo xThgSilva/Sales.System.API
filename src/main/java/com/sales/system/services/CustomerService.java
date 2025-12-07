@@ -1,11 +1,8 @@
 package com.sales.system.services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.sales.system.dto.CustomerDTO;
 import com.sales.system.entities.Customer;
 import com.sales.system.exceptions.NotFoundException;
@@ -17,7 +14,7 @@ public class CustomerService {
 	@Autowired
 	CustomerRepository costumerRepository;
 	
-	public ResponseEntity<Customer> registerCostumer(CustomerDTO dto){
+	public Customer registerCostumer(CustomerDTO dto){
 		Customer costumer = new Customer();
 		
 		costumer.setName(dto.getName());
@@ -26,30 +23,30 @@ public class CustomerService {
 		
 		costumer = costumerRepository.save(costumer);
 		
-		return ResponseEntity.ok(costumer);
+		return costumer;
 	}
 	
-	public ResponseEntity<List<Customer>> findAll(){
-		return ResponseEntity.ok(costumerRepository.findAll());
+	public List<Customer> findAllCustomers(){
+		return (costumerRepository.findAll());
 	}
 	
-	public ResponseEntity<Customer> findById(Long id) {
+	public Customer findById(Long id) {
 		Customer costumerExist = costumerRepository.findById(id)
-				.orElseThrow(() -> new NotFoundException("Costumer with Id: " + id + " not found." ));
+				.orElseThrow(() -> new NotFoundException("Customer with Id: " + id + " not found." ));
 		
-		return ResponseEntity.ok(costumerExist);
+		return costumerExist;
 	}
 	
 	public void delete(Long id){
 		Customer costumer = costumerRepository.findById(id)
-				.orElseThrow(() -> new NotFoundException("Costumer with Id: " + id + " not found." ));
+				.orElseThrow(() -> new NotFoundException("Customer with Id: " + id + " not found." ));
 		
 		costumerRepository.deleteById(id);
 	}
 	
-	public ResponseEntity<Customer> update(Long id, CustomerDTO update) {
+	public Customer update(Long id, CustomerDTO update) {
 		Customer costumer = costumerRepository.findById(id)
-				.orElseThrow(() -> new NotFoundException("Costumer with Id: " + id + " not found." ));
+				.orElseThrow(() -> new NotFoundException("Customer with Id: " + id + " not found." ));
 		
 		if (update.getName() != null && !update.getName().isBlank()) {
 			costumer.setName(update.getName());
@@ -65,6 +62,6 @@ public class CustomerService {
 		
 		costumer = costumerRepository.save(costumer);
 		
-		return ResponseEntity.ok(costumer);
+		return costumer;
 	}
 }
