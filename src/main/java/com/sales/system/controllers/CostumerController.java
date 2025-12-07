@@ -17,8 +17,6 @@ import com.sales.system.dto.CostumerDTO;
 import com.sales.system.entities.Costumer;
 import com.sales.system.services.CostumerService;
 
-import jakarta.validation.Valid;
-
 @RestController
 @RequestMapping(value = "/costumer")
 public class CostumerController {

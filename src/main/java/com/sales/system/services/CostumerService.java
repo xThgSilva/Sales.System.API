@@ -42,14 +42,14 @@ public class CostumerService {
 	
 	public void delete(Long id){
 		Costumer costumer = costumerRepository.findById(id)
-				.orElseThrow(() -> new NotFoundException("Costumer with Id: " + id + "not found." ));
+				.orElseThrow(() -> new NotFoundException("Costumer with Id: " + id + " not found." ));
 		
 		costumerRepository.deleteById(id);
 	}
 	
 	public ResponseEntity<Costumer> update(Long id, CostumerDTO update) {
 		Costumer costumer = costumerRepository.findById(id)
-				.orElseThrow(() -> new NotFoundException("Costumer with Id: " + id + "not found." ));
+				.orElseThrow(() -> new NotFoundException("Costumer with Id: " + id + " not found." ));
 		
 		if (update.getName() != null && !update.getName().isBlank()) {
 			costumer.setName(update.getName());
