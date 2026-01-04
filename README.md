@@ -25,9 +25,9 @@ Cria um novo cliente.
 - **Corpo:**
 ```json
 {
-    "name": "Thiago",
-    "email": "camposthiago2021@gmail.com",
-    "telephone": 11978337448
+    "name": "nome",
+    "email": "email@email.com",
+    "telephone": 1234567890
 }
 ```
 
@@ -37,9 +37,9 @@ Cria um novo cliente.
 ```json
 {
     "id": 1,
-    "name": "Thiago",
-    "email": "camposthiago2021@gmail.com",
-    "telephone": 11978337448
+    "name": "nome",
+    "email": "email@email.com",
+    "telephone": 1234567890
 }
 ```
 
@@ -58,16 +58,16 @@ Lista todos os clientes cadastrados.
 ```json
 [
     {
-        "id": 1,
-        "name": "Thiago",
-        "email": "camposthiago2021@gmail.com",
-        "telephone": 11978337448
+    "id": 1,
+    "name": "nome",
+    "email": "email@email.com",
+    "telephone": 1234567890
     },
     {
         "id": 2,
-        "name": "Maria",
-        "email": "maria@email.com",
-        "telephone": 11987654321
+        "name": "outro nome",
+        "email": "email@email.com",
+        "telephone": 1234567890
     }
 ]
 ```
@@ -89,9 +89,9 @@ Busca um cliente específico por ID.
 ```json
 {
     "id": 1,
-    "name": "Thiago",
-    "email": "camposthiago2021@gmail.com",
-    "telephone": 11978337448
+    "name": "nome",
+    "email": "email@email.com",
+    "telephone": 1234567890
 }
 ```
 
@@ -122,8 +122,8 @@ Atualiza os dados de um cliente existente.
 - **Corpo:**
 ```json
 {
-    "name": "Thiago Campos",
-    "email": "thiago.novo@email.com",
+    "name": "novo nome",
+    "email": "email.novo@email.com",
     "telephone": 11999999999
 }
 ```
@@ -134,8 +134,8 @@ Atualiza os dados de um cliente existente.
 ```json
 {
     "id": 1,
-    "name": "Thiago Campos",
-    "email": "thiago.novo@email.com",
+    "name": "nome nome",
+    "email": "email.novo@email.com",
     "telephone": 11999999999
 }
 ```
