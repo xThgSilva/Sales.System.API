@@ -527,3 +527,6 @@ A API utiliza um sistema de tratamento global de exceções que retorna resposta
 2. **Data da Venda:** A data é gerada automaticamente pelo sistema no momento do registro.
 3. **Cálculo Automático:** O valor total da venda é calculado automaticamente com base nos preços e quantidades.
 4. **Validações:** O sistema valida a existência de clientes e produtos antes de processar vendas.
+
+## Autor
+- [@Thiago](https://www.github.com/xThgSilva)
